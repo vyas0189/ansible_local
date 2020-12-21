@@ -20,3 +20,20 @@
       dest: /home/vyas0/.bashrc
       owner: vyas0
       group: vyas0
+  - name: add ansible user
+    user:
+      name: ansibleusr
+      system: yes
+  - name: set up sudo for ansibel user
+    copy:
+      src: files/sudoer_ansibleusr
+      dest: /etc/sudoers.d/ansibleusr
+      owner: root
+      group: root
+      mode: 0440
+  - name: add ansible-pull cron job
+    cron: 
+      name: ansible auto-provision
+      user: ansibleusr
+      special_time: hourly
+      job: ansible-pull -o -U https://github.com/vyas0189/ansible_local.git 

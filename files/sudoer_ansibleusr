@@ -1,0 +1,1 @@
+ansibleusr ALL=(ALL) NOPASSWD: ALL
