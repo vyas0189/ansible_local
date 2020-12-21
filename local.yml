@@ -14,3 +14,9 @@
        - htop
        - tmux
        - vim-nox
+  - name: copy .bashrc file
+    copy:
+      src: files/bashrc
+      dest: /home/vyas0/.bashrc
+      owner: vyas0
+      group: vyas0
