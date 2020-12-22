@@ -15,10 +15,16 @@
        - tmux
        - vim-nox
        - zsh
-  - name: copy .bashrc file
+  # - name: copy .bashrc file
+  #   copy:
+  #     src: files/bashrc
+  #     dest: /home/vyas0/.bashrc
+  #     owner: vyas0
+  #     group: vyas0
+  - name: copy .zshrc file
     copy:
-      src: files/bashrc
-      dest: /home/vyas0/.bashrc
+      src: files/zshrc
+      dest: /home/vyas0/.zshrc
       owner: vyas0
       group: vyas0
   - name: add ansible user
