@@ -19,13 +19,13 @@
   - name: download oh-my-zsh
     get_url:
       url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-      dest: /tmp/zsh-installer.sh
+      dest: /home/vyas0/zsh-installer.sh
   - name: Execute the zsh-installer.sh
     become: true
-    shell: /tmp/zsh-installer.sh
+    shell: /home/vyas0/zsh-installer.sh
   - name: Remove the zsh-installer.sh
     become: true
-    file: path=/tmp/zsh-installer.sh state=absent
+    file: path=/home/vyas0/zsh-installer.sh state=absent
   - name: change user shell to zsh 
     become: yes
     user:
