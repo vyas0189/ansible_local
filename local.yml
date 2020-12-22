@@ -14,6 +14,7 @@
        - htop
        - tmux
        - vim-nox
+       - zsh
   - name: copy .bashrc file
     copy:
       src: files/bashrc
