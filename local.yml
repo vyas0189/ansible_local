@@ -15,23 +15,38 @@
        - tmux
        - vim-nox
        - zsh
+       - fonts-powerline
+  - name: download oh-my-zsh
+    get_url:
+      url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+      dest: /tmp/zsh-installer.sh
+  - name: Execute the zsh-installer.sh
+    shell: /tmp/zsh-installer.sh
+  - name: Remove the zsh-installer.sh
+    file: path=/tmp/zsh-installer.sh state=absent
+  - name: change user shell to zsh 
+    become: yes
+    user:
+      name: vyas0
+      shell: /bin/zsh
+  
   # - name: copy .bashrc file
   #   copy:
   #     src: files/bashrc
   #     dest: /home/vyas0/.bashrc
   #     owner: vyas0
   #     group: vyas0
-  - name: copy .zshrc file
-    copy:
-      src: files/zshrc
-      dest: /home/vyas0/.zshrc
-      owner: vyas0
-      group: vyas0
+  # - name: copy .zshrc file
+  #   copy:
+  #     src: files/zshrc
+  #     dest: /home/vyas0/.zshrc
+  #     owner: vyas0
+  #     group: vyas0
   - name: add ansible user
     user:
       name: ansibleusr
       system: yes
-  - name: set up sudo for ansibel user
+  - name: set up sudo for ansible user
     copy:
       src: files/sudoer_ansibleusr
       dest: /etc/sudoers.d/ansibleusr
