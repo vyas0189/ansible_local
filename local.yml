@@ -21,8 +21,10 @@
       url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
       dest: /tmp/zsh-installer.sh
   - name: Execute the zsh-installer.sh
+    become: true
     shell: /tmp/zsh-installer.sh
   - name: Remove the zsh-installer.sh
+    become: true
     file: path=/tmp/zsh-installer.sh state=absent
   - name: change user shell to zsh 
     become: yes
