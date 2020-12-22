@@ -19,25 +19,34 @@
        - zsh
        - fonts-powerline
        
-  - name: download oh-my-zsh
+  - name: Check if zsh is installed
+    package_facts:
+      manager: auto
+
+  - name: Download oh-my-zsh
+    when: "'zsh' not in ansible_facts.packages"
     get_url:
       url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
       dest: /home/vyas0/zsh-installer.sh
 
   - name: Change to exctue the zsh-installer.sh
+    when: "'zsh' not in ansible_facts.packages"
     become: true
     command: chmod +x /home/vyas0/zsh-installer.sh
 
   - name: Excute installer
+    when: "'zsh' not in ansible_facts.packages"
     become: true
     shell: sh /home/vyas0/zsh-installer.sh
 
   - name: Remove the zsh-installer.sh
     become: true
+    when: "'zsh' not in ansible_facts.packages"
     file: path=/home/vyas0/zsh-installer.sh state=absent
-    
+
   - name: change user shell to zsh 
-    become: yes
+    become: true
+    when: "'zsh' not in ansible_facts.packages"
     user:
       name: vyas0
       shell: /bin/zsh
