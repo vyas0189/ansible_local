@@ -22,7 +22,8 @@
       dest: /home/vyas0/zsh-installer.sh
   - name: Execute the zsh-installer.sh
     become: true
-    shell: /home/vyas0/zsh-installer.sh
+    command: chmod +x /home/vyas0/zsh-installer.sh
+    shell: sh /home/vyas0/zsh-installer.sh
   - name: Remove the zsh-installer.sh
     become: true
     file: path=/home/vyas0/zsh-installer.sh state=absent
