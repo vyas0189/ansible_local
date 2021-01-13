@@ -50,7 +50,15 @@
     user:
       name: vyas0
       shell: /bin/zsh
-  
+
+  - name: Install docker-compose
+    become: true
+    command: curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+  - name: Execute compose
+    become: true
+    command: chmod +x /usr/local/bin/docker-compose
+    
   # - name: copy .bashrc file
   #   copy:
   #     src: files/bashrc
